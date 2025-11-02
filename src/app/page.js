@@ -1,94 +1,47 @@
-import Link from "next/link";
-import AutoCarousel from "@/components/AutoCarousel";
-import CountDown from "@/components/CountDown";
-import Table from "@/components/Table";
-import SortedTable from "@/components/SortedTable";
-import RadialProgress from "@/components/RadialProgress";
-
+import { FaFutbol, FaRegNewspaper, FaUsers, FaTrophy } from "react-icons/fa";
+import Hero from "@/components/Hero";
+import NewsCard from "@/components/NewsCard";
+import MatchCard from "@/components/MatchCard";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <section>
+    <main className="bg-base-200 min-h-screen pt-4">
+      {/* HERO SECTION */}
+      <Hero />
 
-      <AutoCarousel />
+      {/* RESULTADOS */}
+      <section id="resultados" className="p-8">
+        <h2 className="text-3xl font-bold mb-6 text-center flex items-center justify-center gap-2 text-primary">
+          <FaTrophy className="text-yellow-500 text-3xl" />
+          Últimos Resultados
+        </h2>
 
-
-      <br />
-      <div className="tooltip" data-tip="hello world">
-        <p className="btn">Hover me</p>
-      </div>
-
-      <CountDown />
-      <RadialProgress />
-
-
-      {/* name of each tab group should be unique */}
-      <div className="tabs tabs-box">
-        <input type="radio" name="my_tabs" className="tab" aria-label="Tab 1" />
-        <div className="tab-content bg-base-100 border-base-300 p-6">
-          <p>Tab content 1</p>
-
-          <details className="dropdown">
-            <summary className="btn m-1">open or close</summary>
-            <ul className="menu dropdown-content bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-              <li><a>Item 1</a></li>
-              <li><a>Item 2</a></li>
-            </ul>
-          </details>
+        <div className="grid md:grid-cols-3 gap-6">
+          <MatchCard team1="Real Madrid" team2="Barcelona" score="2 - 1" />
+          <MatchCard team1="Betis" team2="Sevilla" score="1 - 1" />
+          <MatchCard team1="Atlético" team2="Valencia" score="3 - 1" />
         </div>
+      </section>
 
-        <input type="radio" name="my_tabs" className="tab" aria-label="Tab 2" />
-        <div className="tab-content bg-base-100 border-base-300 p-6">
-          <p>Tab content 2</p>
+      {/* NOTICIAS */}
+      <section id="noticias" className="p-8 bg-base-100">
+        <h2 className="text-3xl font-bold mb-6 text-center flex items-center justify-center gap-2 text-primary">
+          <FaRegNewspaper className="text-secondary text-3xl" />
+          Noticias Recientes
+        </h2>
 
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn m-1">Click</div>
-            <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-              <li><a>Item 1</a></li>
-              <li><a>Item 2</a></li>
-            </ul>
-          </div>
+        <div className="grid md:grid-cols-3 gap-6">
+          <NewsCard title="LaLiga 2025/26 arranca con nuevos fichajes estrella" image="/news1.jpg" date="28/10/2025" />
+          <NewsCard title="España se consolida como potencia en fútbol femenino" image="/news2.jpg" date="27/10/2025" />
+          <NewsCard title="Un clásico vibrante deja a los aficionados sin aliento" image="/news3.jpg" date="26/10/2025" />
+          <NewsCard title="Betis presenta su nuevo estadio sostenible" image="/news4.jpg" date="25/10/2025" />
+          <NewsCard title="La tecnología VAR cumple cinco años en España" image="/news5.jpg" date="24/10/2025" />
+          <NewsCard title="Girona sorprende al mundo con su estilo ofensivo" image="/news6.jpg" date="23/10/2025" />
         </div>
-
-        <input type="radio" name="my_tabs" className="tab" aria-label="Tab 3" defaultChecked />
-        <div className="tab-content bg-base-100 border-base-300 p-6">
-          <p>Tab content 3</p>
-
-          <button className="btn btn-neutral">Neutral</button>
-          <button className="btn btn-primary">Primary</button>
-          <button className="btn btn-secondary">Secondary</button>
-          <button className="btn btn-accent">Accent</button>
-          <button className="btn btn-info">Info</button>
-          <button className="btn btn-success">Success</button>
-          <button className="btn btn-warning">Warning</button>
-          <button className="btn btn-error">Error</button>
-          <br />
-          <button className="btn btn-soft">Default</button>
-          <button className="btn btn-soft btn-primary">Primary</button>
-          <button className="btn btn-soft btn-secondary">Secondary</button>
-          <button className="btn btn-soft btn-accent">Accent</button>
-          <button className="btn btn-soft btn-info">Info</button>
-          <button className="btn btn-soft btn-success">Success</button>
-          <button className="btn btn-soft btn-warning">Warning</button>
-          <button className="btn btn-soft btn-error">Error</button>
-          <br />
-          <button className="btn btn-outline">Default</button>
-          <button className="btn btn-outline btn-primary">Primary</button>
-          <button className="btn btn-outline btn-secondary">Secondary</button>
-          <button className="btn btn-outline btn-accent">Accent</button>
-          <button className="btn btn-outline btn-info">Info</button>
-          <button className="btn btn-outline btn-success">Success</button>
-          <button className="btn btn-outline btn-warning">Warning</button>
-          <button className="btn btn-outline btn-error">Error</button>
-
-        </div>
-      </div>
-
-      <div className="p-10 bg-white"></div>
-
-      <SortedTable />
-      {/* <Table /> */}
-
-    </section>
+      </section>
+      {/* FOOTER */}
+      <Footer />
+    </main>
   );
 }
