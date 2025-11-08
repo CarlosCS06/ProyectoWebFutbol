@@ -31,7 +31,7 @@ const equiposSegunda = [
 export default function EquiposSegunda() {
   return (
     <main className="bg-base-200 min-h-screen p-8">
-      <h1 className="text-4xl font-bold text-primary text-center mb-10">
+      <h1 className="text-4xl font-bold  text-sky-600 text-center mb-10">
         ⚽ Equipos de LaLiga Hypermotion
       </h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">

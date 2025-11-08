@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import { FaFutbol, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
 export default function ClasificacionLigue1() {
   const equipos = [
     { pos: 1, nombre: "Paris Saint-Germain", pts: 24, pj: 11, pg: 7, pe: 3, pp: 1, gf: 21, gc: 9, escudo: "/images/equiposfutbol/ligue1/psg.png" },
-    { pos: 2, nombre: "Marseille", pts: 22, pj: 11, pg: 7, pe: 1, pp: 3, gf: 25, gc: 11, escudo: "/images/equiposfutbol/ligue1/marseille.png" },
+    { pos: 2, nombre: "Olympique de Marsella", pts: 22, pj: 11, pg: 7, pe: 1, pp: 3, gf: 25, gc: 11, escudo: "/images/equiposfutbol/ligue1/marseille.png" },
     { pos: 3, nombre: "Lens", pts: 22, pj: 11, pg: 7, pe: 1, pp: 3, gf: 17, gc: 10, escudo: "/images/equiposfutbol/ligue1/lens.png" },
     { pos: 4, nombre: "Lille", pts: 20, pj: 11, pg: 6, pe: 2, pp: 3, gf: 23, gc: 13, escudo: "/images/equiposfutbol/ligue1/lille.png" },
     { pos: 5, nombre: "Monaco", pts: 20, pj: 11, pg: 6, pe: 2, pp: 3, gf: 23, gc: 17, escudo: "/images/equiposfutbol/ligue1/monaco.png" },
@@ -25,52 +25,75 @@ export default function ClasificacionLigue1() {
     { pos: 18, nombre: "Auxerre", pts: 7, pj: 11, pg: 2, pe: 1, pp: 8, gf: 7, gc: 17, escudo: "/images/equiposfutbol/ligue1/auxerre.png" },
   ];
 
-  const colorFila = (pos) => {
-    if (pos <= 4) return "bg-blue-100";
-    if (pos === 5) return "bg-orange-100";
-    if (pos === 6) return "bg-green-100";
-    if (pos === 16) return "bg-red-50";
-    if (pos >= 17) return "bg-red-100";
-    return "bg-white";
+  const getRowColor = (pos) => {
+    if (pos <= 4) return "bg-blue-200"; // Champions
+    if (pos === 5) return "bg-orange-200"; // Europa League
+    if (pos === 6) return "bg-green-200"; // Conference League
+    if (pos === 16) return "bg-red-100"; // Promoción
+    if (pos >= 17) return "bg-red-300 text-white"; // Descenso
+    return "";
   };
 
   return (
-    <main className="p-8 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold text-[#1e3a8a] text-center mb-8">
-        Clasificación Ligue 1 Uber Eats
+    <main className="bg-base-200 min-h-screen p-8">
+      <h1 className="text-4xl font-bold text-[#1e3a8a] text-center mb-10">
+        🏆 Clasificación - Ligue 1 Uber Eats
       </h1>
-      <div className="overflow-x-auto">
-        <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
-          <thead className="bg-[#1e3a8a] text-white">
+
+      <div className="overflow-x-auto max-w-5xl mx-auto">
+        <table className="table w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <thead className="bg-[#1e3a8a] text-white text-center">
             <tr>
-              <th className="p-3 text-left">Pos</th>
-              <th className="p-3 text-left">Equipo</th>
-              <th className="p-3">PT</th>
-              <th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th>
+              <th>Pos</th>
+              <th>Equipo</th>
+              <th>PT</th>
+              <th>PJ</th>
+              <th>PG</th>
+              <th>PE</th>
+              <th>PP</th>
+              <th>GF</th>
+              <th>GC</th>
             </tr>
           </thead>
           <tbody>
             {equipos.map((e) => (
-              <tr key={e.pos}className={`${colorFila(e.pos)} border-b hover:bg-gray-100 transition-colors duration-200 ease-in-out`}>
-                <td className="p-2 text-center font-semibold">{e.pos}</td>
-                <td className="flex items-center gap-3 p-2">
-                  <Image src={e.escudo} alt={e.nombre} width={28} height={28} />
+              <tr key={e.pos} className={`${getRowColor(e.pos)} text-center`}>
+                <td className="font-bold">{e.pos}</td>
+                <td className="flex items-center gap-2 justify-start">
+                  <Image
+                    src={e.escudo}
+                    alt={e.nombre}
+                    width={24}
+                    height={24}
+                  />
                   {e.nombre}
                 </td>
-                <td className="text-center">{e.pts}</td>
-                <td className="text-center">{e.pj}</td>
-                <td className="text-center">{e.pg}</td>
-                <td className="text-center">{e.pe}</td>
-                <td className="text-center">{e.pp}</td>
-                <td className="text-center">{e.gf}</td>
-                <td className="text-center">{e.gc}</td>
+                <td>{e.pts}</td>
+                <td>{e.pj}</td>
+                <td>{e.pg}</td>
+                <td>{e.pe}</td>
+                <td>{e.pp}</td>
+                <td>{e.gf}</td>
+                <td>{e.gc}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-            <div className="flex justify-center mt-10">
-        <Link href="/ligas/ligue1" className="btn btn-outline text-blue-600 border-blue-600 flex items-center gap-2">
+
+      <div className="max-w-5xl mx-auto mt-6 text-sm text-gray-700">
+        <p>🔵 Champions League</p>
+        <p>🟧 Europa League</p>
+        <p>🟩 Conference League</p>
+        <p>🩸 Promoción</p>
+        <p>🟥 Descenso</p>
+      </div>
+
+      <div className="flex justify-center mt-10">
+        <Link
+          href="/ligas/ligue1"
+          className="btn btn-outline text-[#1E3A8A] border-[#1E3A8A] flex items-center gap-2"
+        >
           <FaArrowLeft /> Volver a la Ligue 1
         </Link>
       </div>

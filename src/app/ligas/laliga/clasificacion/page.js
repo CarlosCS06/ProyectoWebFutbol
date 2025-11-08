@@ -37,13 +37,13 @@ export default function ClasificacionPrimera() {
 
   return (
     <main className="bg-base-200 min-h-screen p-8">
-      <h1 className="text-4xl font-bold text-primary text-center mb-10">
+      <h1 className="text-4xl font-bold text-orange-600 text-center mb-10">
         🏆 Clasificación - LaLiga EA Sports
       </h1>
 
       <div className="overflow-x-auto max-w-5xl mx-auto">
         <table className="table w-full shadow-md bg-white rounded-lg overflow-hidden">
-          <thead className="bg-primary text-white text-center">
+          <thead className="bg-orange-600 text-white text-center">
             <tr>
               <th>Pos</th>
               <th>Equipo</th>
@@ -87,7 +87,7 @@ export default function ClasificacionPrimera() {
       <div className="flex justify-center mt-10">
         <Link
           href="/ligas/laliga"
-          className="btn btn-outline btn-primary flex items-center gap-2"
+          className="btn btn-outline text-orange-600 border-orange-600 flex items-center gap-2"
         >
           <FaArrowLeft /> Volver a LaLiga
         </Link>

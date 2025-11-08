@@ -29,7 +29,7 @@ const equiposPrimera = [
 export default function EquiposPrimera() {
   return (
     <main className="bg-base-200 min-h-screen p-8">
-      <h1 className="text-4xl font-bold text-primary text-center mb-10">
+      <h1 className="text-4xl font-bold text-orange-600 text-center mb-10">
         ⚽ Equipos de LaLiga EA Sports
       </h1>
       <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
@@ -50,7 +50,7 @@ export default function EquiposPrimera() {
       <div className="flex justify-center mt-10">
         <Link
           href="/ligas/laliga"
-          className="btn btn-outline btn-primary flex items-center gap-2"
+          className="btn btn-outline text-orange-600 border-orange-600 flex items-center gap-2"
         >
           <FaArrowLeft /> Volver a LaLiga
         </Link>

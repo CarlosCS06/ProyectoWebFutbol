@@ -1,19 +1,80 @@
 "use client";
+import Image from "next/image";
 import { FaFutbol, FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
 export default function ResultadosPremier() {
   const resultados = [
-    { local: "Brighton", marcador: "3 - 0", visitante: "Leeds" },
-    { local: "Burnley", marcador: "0 - 2", visitante: "Arsenal" },
-    { local: "Crystal Palace", marcador: "2 - 0", visitante: "Brentford" },
-    { local: "Fulham", marcador: "3 - 0", visitante: "Wolves" },
-    { local: "Nottingham Forest", marcador: "2 - 2", visitante: "Man United" },
-    { local: "Tottenham", marcador: "0 - 1", visitante: "Chelsea" },
-    { local: "Liverpool", marcador: "2 - 0", visitante: "Aston Villa" },
-    { local: "West Ham", marcador: "3 - 1", visitante: "Newcastle" },
-    { local: "Man City", marcador: "3 - 1", visitante: "Bournemouth" },
-    { local: "Sunderland", marcador: "1 – 1", visitante: "Everton" },
+    {
+      local: "Brighton",
+      escudoLocal: "/images/equiposfutbol/premier/brighton.png",
+      marcador: "3 - 0",
+      visitante: "Leeds",
+      escudoVisitante: "/images/equiposfutbol/premier/leeds united.png",
+    },
+    {
+      local: "Burnley",
+      escudoLocal: "/images/equiposfutbol/premier/burnley.png",
+      marcador: "0 - 2",
+      visitante: "Arsenal",
+      escudoVisitante: "/images/equiposfutbol/premier/arsenal.png",
+    },
+    {
+      local: "Crystal Palace",
+      escudoLocal: "/images/equiposfutbol/premier/crystal palace.png",
+      marcador: "2 - 0",
+      visitante: "Brentford",
+      escudoVisitante: "/images/equiposfutbol/premier/brentford.png",
+    },
+    {
+      local: "Fulham",
+      escudoLocal: "/images/equiposfutbol/premier/fulham.png",
+      marcador: "3 - 0",
+      visitante: "Wolves",
+      escudoVisitante: "/images/equiposfutbol/premier/wolves.png",
+    },
+    {
+      local: "Nottingham Forest",
+      escudoLocal: "/images/equiposfutbol/premier/nottingham forest.png",
+      marcador: "2 - 2",
+      visitante: "Manchester United",
+      escudoVisitante: "/images/equiposfutbol/premier/manchester united.png",
+    },
+    {
+      local: "Tottenham",
+      escudoLocal: "/images/equiposfutbol/premier/tottenham.png",
+      marcador: "0 - 1",
+      visitante: "Chelsea",
+      escudoVisitante: "/images/equiposfutbol/premier/chelsea.png",
+    },
+    {
+      local: "Liverpool",
+      escudoLocal: "/images/equiposfutbol/premier/liverpool.png",
+      marcador: "2 - 0",
+      visitante: "Aston Villa",
+      escudoVisitante: "/images/equiposfutbol/premier/aston villa.png",
+    },
+    {
+      local: "West Ham",
+      escudoLocal: "/images/equiposfutbol/premier/west ham.png",
+      marcador: "3 - 1",
+      visitante: "Newcastle",
+      escudoVisitante: "/images/equiposfutbol/premier/newcastle.png",
+    },
+    {
+      local: "Manchester City",
+      escudoLocal: "/images/equiposfutbol/premier/manchester city.png",
+      marcador: "3 - 1",
+      visitante: "Bournemouth",
+      escudoVisitante: "/images/equiposfutbol/premier/bournemouth.png",
+    },
+    {
+      local: "Sunderland",
+      escudoLocal: "/images/equiposfutbol/premier/sunderland.png",
+      marcador: "1 - 1",
+      visitante: "Everton",
+      escudoVisitante: "/images/equiposfutbol/premier/everton.png",
+    },
   ];
 
   return (
@@ -39,27 +100,14 @@ export default function ResultadosPremier() {
           <tbody>
             {resultados.map((r, i) => (
               <tr key={i} className="hover:bg-base-300 transition-colors">
-                {/* Local */}
-                <td className="text-left px-4 py-2 font-semibold flex items-center gap-2">
+                <td className="text-left px-4 py-2 flex items-center gap-2">
+                  <Image src={r.escudoLocal} alt={r.local} width={24} height={24} />
                   <span>{r.local}</span>
-                  <img
-                    src={`/escudos/${r.local}.png`}
-                    alt={r.local}
-                    className="w-6 h-6"
-                  />
                 </td>
-
-                {/* Marcador */}
                 <td className="px-4 py-2 text-lg font-bold">{r.marcador}</td>
-
-                {/* Visitante */}
-                <td className="text-right px-4 py-2 font-semibold flex items-center justify-end gap-2">
-                  <img
-                    src={`/escudos/${r.visitante}.png`}
-                    alt={r.visitante}
-                    className="w-6 h-6"
-                  />
+                <td className="text-right px-4 py-2 flex items-center justify-end gap-2">
                   <span>{r.visitante}</span>
+                  <Image src={r.escudoVisitante} alt={r.visitante} width={24} height={24} />
                 </td>
               </tr>
             ))}
@@ -68,7 +116,10 @@ export default function ResultadosPremier() {
       </div>
 
       <div className="flex justify-center mt-10">
-        <Link href="/ligas/premier" className="btn btn-outline text-purple-600 border-purple-600 flex items-center gap-2">
+        <Link
+          href="/ligas/premier"
+          className="btn btn-outline text-purple-600 border-purple-600 flex items-center gap-2"
+        >
           <FaArrowLeft /> Volver a la Premier League
         </Link>
       </div>

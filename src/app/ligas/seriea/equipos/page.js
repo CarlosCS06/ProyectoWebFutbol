@@ -1,34 +1,48 @@
 "use client";
 import Image from "next/image";
-import { FaFutbol, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
-export default function EquiposSerieA() {
-  const equipos = [
-    "Atalanta", "Bolonia", "Cagliari", "Como", "Cremonese", "Fiorentina", "Genoa",
-    "Hellas Verona", "Inter Milán", "Juventus", "Lazio", "Lecce", "Milan", "Nápoles",
-    "Parma", "Pisa", "Roma", "Sassuolo", "Torino", "Udinese"
-  ];
+const equiposSerieA = [
+  { nombre: "Inter de Milán", escudo: "/images/equiposfutbol/seriea/inter.png" },
+  { nombre: "AC Milan", escudo: "/images/equiposfutbol/seriea/milan.png" },
+  { nombre: "Juventus", escudo: "/images/equiposfutbol/seriea/juventus.png" },
+  { nombre: "Napoli", escudo: "/images/equiposfutbol/seriea/napoles.png" },
+  { nombre: "Roma", escudo: "/images/equiposfutbol/seriea/roma.png" },
+  { nombre: "Lazio", escudo: "/images/equiposfutbol/seriea/lazio.png" },
+  { nombre: "Atalanta", escudo: "/images/equiposfutbol/seriea/atalanta.png" },
+  { nombre: "Fiorentina", escudo: "/images/equiposfutbol/seriea/fiorentina.png" },
+  { nombre: "Torino", escudo: "/images/equiposfutbol/seriea/torino.png" },
+  { nombre: "Udinese", escudo: "/images/equiposfutbol/seriea/udinese.png" },
+  { nombre: "Cagliari", escudo: "/images/equiposfutbol/seriea/cagliari.png" },
+  { nombre: "Como", escudo: "/images/equiposfutbol/seriea/como.png" },
+  { nombre: "Sassuolo", escudo: "/images/equiposfutbol/seriea/sassuolo.png" },
+  { nombre: "Parma", escudo: "/images/equiposfutbol/seriea/parma.png" },
+  { nombre: "Hellas Verona", escudo: "/images/equiposfutbol/seriea/verona.png" },
+  { nombre: "Bologna", escudo: "/images/equiposfutbol/seriea/bolonia.png" },
+  { nombre: "Genoa", escudo: "/images/equiposfutbol/seriea/genoa.png" },
+  { nombre: "Pisa", escudo: "/images/equiposfutbol/seriea/pisa.png" },
+  { nombre: "Lecce", escudo: "/images/equiposfutbol/seriea/lecce.png" },
+  { nombre: "Cremonese", escudo: "/images/equiposfutbol/seriea/cremonese.png" },
+];
 
+export default function EquiposSerieA() {
   return (
-    <main className="p-8 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold text-[#0D9488] text-center mb-8">Equipos de la Serie A</h1>
-      <div className="grid md:grid-cols-5 gap-8 max-w-6xl mx-auto">
-        {equipos.map((e) => (
-          <div key={e} className="bg-white p-4 rounded-lg shadow hover:shadow-md text-center transition">
-            <Image
-              src={`/images/equiposfutbol/seriea/${e.toLowerCase().replace(/\s/g, "")}.png`}
-              alt={e}
-              width={80}
-              height={80}
-              className="mx-auto"
-            />
-            <h2 className="font-semibold mt-3">{e}</h2>
+    <main className="bg-base-200 min-h-screen p-8">
+      <h1 className="text-4xl font-bold text-[#00796B] text-center mb-10">
+        ⚽ Equipos de la Serie A
+      </h1>
+      <div className="grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-6xl mx-auto">
+        {equiposSerieA.map((equipo) => (
+          <div key={equipo.nombre} className="card bg-base-100 shadow-xl items-center text-center p-4 hover:scale-105 transition-transform">
+            <Image src={equipo.escudo} alt={equipo.nombre} width={100} height={100} className="object-contain mb-2" />
+            <h2 className="font-semibold">{equipo.nombre}</h2>
           </div>
         ))}
       </div>
+
       <div className="flex justify-center mt-10">
-        <Link href="/ligas/seriea" className="btn btn-outline text-green-600 border-green-600 flex items-center gap-2">
+        <Link href="/ligas/seriea" className="btn btn-outline text-[#00796B] border-[#00796B] flex items-center gap-2">
           <FaArrowLeft /> Volver a la Serie A
         </Link>
       </div>

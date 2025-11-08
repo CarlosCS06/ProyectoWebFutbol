@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { FaFutbol, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 import Link from "next/link";
 
 export default function ClasificacionBundesliga() {
@@ -12,7 +12,7 @@ export default function ClasificacionBundesliga() {
     { pos: 5, nombre: "Bayer Leverkusen", pts: 17, pj: 9, pg: 5, pe: 2, pp: 2, gf: 18, gc: 14, escudo: "/images/equiposfutbol/bundesliga/leverkusen.png" },
     { pos: 6, nombre: "TSG Hoffenheim", pts: 16, pj: 9, pg: 5, pe: 1, pp: 3, gf: 22, gc: 15, escudo: "/images/equiposfutbol/bundesliga/hoffenheim.png" },
     { pos: 7, nombre: "Colonia", pts: 14, pj: 9, pg: 4, pe: 2, pp: 3, gf: 16, gc: 12, escudo: "/images/equiposfutbol/bundesliga/colonia.png" },
-    { pos: 8, nombre: "Eintracht Frankfurt", pts: 14, pj: 9, pg: 4, pe: 2, pp: 3, gf: 22, gc: 19, escudo: "/images/equiposfutbol/bundesliga/eintracht.png" },
+    { pos: 8, nombre: "Eintracht Frankfurt", pts: 14, pj: 9, pg: 4, pe: 2, pp: 3, gf: 22, gc: 19, escudo: "/images/equiposfutbol/bundesliga/frankfurt.png" },
     { pos: 9, nombre: "Werder Bremen", pts: 12, pj: 9, pg: 3, pe: 3, pp: 3, gf: 18, gc: 17, escudo: "/images/equiposfutbol/bundesliga/bremen.png" },
     { pos: 10, nombre: "Union Berlin", pts: 11, pj: 9, pg: 3, pe: 2, pp: 4, gf: 15, gc: 15, escudo: "/images/equiposfutbol/bundesliga/union.png" },
     { pos: 11, nombre: "Friburgo", pts: 10, pj: 9, pg: 3, pe: 1, pp: 5, gf: 11, gc: 13, escudo: "/images/equiposfutbol/bundesliga/friburgo.png" },
@@ -25,52 +25,75 @@ export default function ClasificacionBundesliga() {
     { pos: 18, nombre: "1. FC Heidenheim 1846", pts: 5, pj: 9, pg: 1, pe: 2, pp: 6, gf: 8, gc: 17, escudo: "/images/equiposfutbol/bundesliga/heidenheim.png" },
   ];
 
-  const colorFila = (pos) => {
-    if (pos <= 4) return "bg-blue-100"; // Champions
-    if (pos === 5) return "bg-orange-100"; // Europa League
-    if (pos === 6) return "bg-green-100"; // Conference League
-    if (pos === 16) return "bg-red-50"; // Promoción
-    if (pos >= 17) return "bg-red-100"; // Descenso
-    return "bg-white";
+  const getRowColor = (pos) => {
+    if (pos <= 4) return "bg-blue-200"; // Champions
+    if (pos === 5) return "bg-orange-200"; // Europa League
+    if (pos === 6) return "bg-green-200"; // Conference League
+    if (pos === 16) return "bg-red-100"; // Promoción
+    if (pos >= 17) return "bg-red-300 text-white"; // Descenso
+    return "";
   };
 
   return (
-    <main className="p-8 bg-gray-50 min-h-screen">
-      <h1 className="text-4xl font-bold text-[#dc2626] text-center mb-8">
-        Clasificación Bundesliga
+    <main className="bg-base-200 min-h-screen p-8">
+      <h1 className="text-4xl font-bold text-[#dc2626] text-center mb-10">
+        🏆 Clasificación - Bundesliga
       </h1>
-      <div className="overflow-x-auto">
-        <table className="w-full bg-white rounded-xl shadow-lg overflow-hidden">
-          <thead className="bg-[#dc2626] text-white">
+
+      <div className="overflow-x-auto max-w-5xl mx-auto">
+        <table className="table w-full bg-white shadow-md rounded-lg overflow-hidden">
+          <thead className="bg-[#dc2626] text-white text-center">
             <tr>
-              <th className="p-3 text-left">Pos</th>
-              <th className="p-3 text-left">Equipo</th>
-              <th className="p-3">PT</th>
-              <th>PJ</th><th>PG</th><th>PE</th><th>PP</th><th>GF</th><th>GC</th>
+              <th>Pos</th>
+              <th>Equipo</th>
+              <th>PT</th>
+              <th>PJ</th>
+              <th>PG</th>
+              <th>PE</th>
+              <th>PP</th>
+              <th>GF</th>
+              <th>GC</th>
             </tr>
           </thead>
           <tbody>
             {equipos.map((e) => (
-              <tr key={e.pos} className={`${colorFila(e.pos)} border-b`}>
-                <td className="p-2 text-center font-semibold">{e.pos}</td>
-                <td className="flex items-center gap-3 p-2">
-                  <Image src={e.escudo} alt={e.nombre} width={28} height={28} />
+              <tr key={e.pos} className={`${getRowColor(e.pos)} text-center`}>
+                <td className="font-bold">{e.pos}</td>
+                <td className="flex items-center gap-2 justify-start">
+                  <Image
+                    src={e.escudo}
+                    alt={e.nombre}
+                    width={24}
+                    height={24}
+                  />
                   {e.nombre}
                 </td>
-                <td className="text-center">{e.pts}</td>
-                <td className="text-center">{e.pj}</td>
-                <td className="text-center">{e.pg}</td>
-                <td className="text-center">{e.pe}</td>
-                <td className="text-center">{e.pp}</td>
-                <td className="text-center">{e.gf}</td>
-                <td className="text-center">{e.gc}</td>
+                <td>{e.pts}</td>
+                <td>{e.pj}</td>
+                <td>{e.pg}</td>
+                <td>{e.pe}</td>
+                <td>{e.pp}</td>
+                <td>{e.gf}</td>
+                <td>{e.gc}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      <div className="max-w-5xl mx-auto mt-6 text-sm text-gray-700">
+        <p>🔵 Champions League</p>
+        <p>🟧 Europa League</p>
+        <p>🟩 Conference League</p>
+        <p>🟥 Descenso</p>
+        <p>🩸 Promoción</p>
+      </div>
+
       <div className="flex justify-center mt-10">
-        <Link href="/ligas/bundesliga" className="btn btn-outline text-red-600 border-red-600 flex items-center gap-2">
+        <Link
+          href="/ligas/bundesliga"
+          className="btn btn-outline text-red-600 border-red-600 flex items-center gap-2"
+        >
           <FaArrowLeft /> Volver a la Bundesliga
         </Link>
       </div>
